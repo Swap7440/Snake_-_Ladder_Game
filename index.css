@@ -1,0 +1,51 @@
+
+.outerdiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('https://thumbs.dreamstime.com/b/snakes-jungle-scene-illustration-153779527.jpg');
+}
+
+.maindiv {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border: 2px solid #333;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #d3ecd2;
+}
+
+.Playerone, .Playertwo {
+    text-align: center;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 5px;
+}
+
+h3 {
+    color: #666;
+    margin-bottom: 10px;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.imagebox img {
+    max-width: 80vh;
+    
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Snake & Ladder Game</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+    <div class="outerdiv">
+        <div class="maindiv">
+
+            <div class="Playerone">
+                <h1>Player No: 1</h1><br>
+                <h3>Number on dice: <h2 id="numberondise1">0</h2></h3>
+                <h3>Your Current Position: <h1 id="currentposition1">0</h1></h3>
+                <button onclick="throwDiceOne()">Throw Dice</button>
+            </div>
+
+            <div class="imagebox">
+                <img src="https://i.pinimg.com/originals/40/dc/01/40dc0137e12227698bad49469cdaa75b.jpg">
+            </div>
+
+            <div class="Playertwo">
+                <h1>Player No: 2</h1><br>
+                <h3>Number on dice: <h2 id="numberondise2">0</h2></h3>
+                <h3>Your Current Position: <h1 id="currentposition2">0</h1></h3>
+                <button onclick="throwDiceTwo()">Throw Dice</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var player1Position = 0;
+        var player2Position = 0;
+
+        var ladderstart = [1, 4, 9, 21, 28, 51, 72, 80];
+        var ladderend = [38, 14, 31, 42, 84, 67, 91, 99];
+
+        var snakestart = [17, 54, 62, 64, 87, 92, 95, 98];
+        var snakeend = [7, 34, 19, 60, 36, 73, 75, 79];
+
+
+        function throwDiceOne() {
+    var randomNumber = Math.floor(Math.random() * 6) + 1;
+    document.getElementById('numberondise1').innerHTML = randomNumber;
+
+    player1Position = player1Position + randomNumber;
+
+    if (player1Position <= 100) {
+        if (ladderstart.includes(player1Position)) {
+            var indexofladder = ladderstart.indexOf(player1Position);
+            player1Position = ladderend[indexofladder];
+            alert('Player one climbed a ladder');
+        } else if (snakestart.includes(player1Position)) {
+            var indexofsnake = snakestart.indexOf(player1Position);
+            player1Position = snakeend[indexofsnake];
+            alert('Player one encountered a snake');
+        }
+        document.getElementById('currentposition1').innerHTML = player1Position;
+    }
+
+    if (player1Position === 100) {
+        alert('Player one won the match & game is over ...');
+        player1Position = 0;
+        player2Position = 0;
+        document.getElementById('currentposition1').innerHTML = player1Position;
+        document.getElementById('currentposition2').innerHTML = player2Position;
+        document.getElementById('numberondise1').innerHTML = 0;
+        document.getElementById('numberondise2').innerHTML = 0;
+    } else if (player1Position > 100) {
+        alert('Player one requires a perfect count to win');
+        player1Position -= randomNumber;
+        document.getElementById('currentposition1').innerHTML = player1Position;
+    }
+}
+        
+
+
+
+function throwDiceTwo() {
+    var randomNumber = Math.floor(Math.random() * 6) + 1;
+    document.getElementById('numberondise2').innerHTML = randomNumber;
+
+    player2Position = player2Position + randomNumber;
+
+    if (player2Position <= 100) {
+        if (ladderstart.includes(player2Position)) {
+            var indexofladder = ladderstart.indexOf(player2Position);
+            player2Position = ladderend[indexofladder];
+            alert('Player two climbed a ladder');
+        } else if (snakestart.includes(player2Position)) {
+            var indexofsnake = snakestart.indexOf(player2Position);
+            player2Position = snakeend[indexofsnake];
+            alert('Player two encountered a snake');
+        }
+        document.getElementById('currentposition2').innerHTML = player2Position;
+    }
+
+    if (player2Position === 100) {
+        alert('Player two won the match & game is over ...');
+        player1Position = 0;
+        player2Position = 0;
+        document.getElementById('currentposition1').innerHTML = player1Position;
+        document.getElementById('currentposition2').innerHTML = player2Position;
+        document.getElementById('numberondise1').innerHTML = 0;
+        document.getElementById('numberondise2').innerHTML = 0;
+    } else if (player2Position > 100) {
+        alert('Player two requires a perfect count to win');
+        player2Position -= randomNumber;
+        document.getElementById('currentposition2').innerHTML = player2Position;
+    }
+}
+
+
+
+        
+    </script>
+</body>
+</html>
